@@ -12,4 +12,9 @@ if [[ "${PROXY_CACHE_VALID+x}" ]]; then
 fi
 sed -i "s|\$PROXY_CACHE_VALID|${PROXY_CACHE_VALID-}|" /etc/nginx/nginx.conf
 
+if [[ "${PROXY_SET_HEADER_HOST+x}" ]]; then
+  PROXY_SET_HEADER_HOST="proxy_set_header Host ${PROXY_SET_HEADER_HOST};"
+fi
+sed -i "s|\$PROXY_SET_HEADER_HOST|${PROXY_SET_HEADER_HOST-}|" /etc/nginx/nginx.conf
+
 exec "$@"
