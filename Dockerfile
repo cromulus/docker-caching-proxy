@@ -1,6 +1,6 @@
 FROM nginx
 
-RUN mkdir /cache \
+RUN mkdir -p /cache \
  && chown nginx /cache
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /entrypoint.sh
